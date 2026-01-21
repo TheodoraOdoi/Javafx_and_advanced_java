@@ -173,12 +173,12 @@ public abstract class Person
                 "\nName(s): %s" +
                 "\nBirth Date: %s" +
                 "\nGender: %s" +
-                "\nNationality: ",
+                "\nNationality: %s",
                 getPersonRole(),
                 getNames(),
-                birthDate,
+                this.birthDate,
                 (getGender() == 'm' || getGender() == 'M') ? "Male":"Female",
-                nationality
+                this.nationality
                    
         );
     }
