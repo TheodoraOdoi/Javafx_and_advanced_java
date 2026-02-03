@@ -3,6 +3,7 @@ package edu.adse2501.sess02_generics;
 /**
  * This class will be used to demonstrate bound generic classes and generic methods.
  * This class accepts type java.lang.Number or any of its subclasses
+ * 
  * @param <T> A class that extends the abstract java.lang.Number class.
  * @author Administrator
  */

@@ -29,10 +29,10 @@ public class GenericClassInheritanceDemo {
                 LocalDate.now().plusDays(14));
         
         //2. Create a Juice Container
-        FoodContainer<Drink> juiceContainer = new FoodContainer<>(appleJuice);
+        DrinkContainer<Drink> juiceContainer = new DrinkContainer<>(appleJuice);
         
         //3. Invoke the methods from the 'Container' and 'DrinkContainer' classes
         juiceContainer.displayItemInfo();
-    juiceContainer.displayExpirationDate();
+        juiceContainer.displayExpirationDate();
     }
 }
