@@ -41,7 +41,16 @@ class ArraySumTask extends RecursiveTask<Long>
             ArraySumTask leftTask = new ArraySumTask(array, start, middle);
             ArraySumTask rightTask = new ArraySumTask(array, middle, end);
             
-            //fork the 
+            // Fork the subtasks for parallel execution
+            leftTask.fork();
+            rightTask.fork();
+            
+            // Wait and combine the results of the subtasks
+            long leftResult = leftTask.join();
+            long rightResult = rightTask.join();
+            
+            // Return the combined result
+            return leftResult + rightResult; 
         }
     }
     
@@ -55,26 +64,26 @@ class ArraySumTask extends RecursiveTask<Long>
  */
 public class ForkJoinDemo
 {
-    // Declare and initialise an array of numbers
+    public static void main(String[] args)
+    {
+        // Declare and initialise an array of numbers
         int[] array = new int[10000];
         for (int n = 0; n < array.length; n++)
         {
             array[n] = n + 1; // Fill the array with numbers (1 - 10000)
         }
-
+        
         // Create a ForkJoinPool
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-
+        
         // Create the main task for summing the array
         ArraySumTask mainTask = new ArraySumTask(array, 0, array.length);
-
+        
         // Call/invoke the task and get the result
         long result = forkJoinPool.invoke(mainTask);
-
+        
         // Display the result
         System.out.println("The sum of the numbers from 1 to " + array.length +
                 " is " + result);
-
-
-
+    }
 }

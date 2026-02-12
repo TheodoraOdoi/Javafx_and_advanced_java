@@ -1,28 +1,26 @@
-
-package edu.adse2501.sess04_thread;
+package edu.adse2501.sess04_threads;
 
 import java.security.SecureRandom;
 
 /**
- * Java class to demonstrate creating new threads by extending the 
- * java.lang.Thread class. Each thread sleeps for a random duration, simulates
- * some work and prints some output.
+ * Demonstrate creating a new thread(s) by implementing the 
+ * java.lang.Runnable interface and overriding its run() method. Each thread
+ * sleeps for a random duration and performs a simulated task.
  * 
  * @author todoi
  */
-public class ExtendThread extends Thread
+public class ImplementRunnable implements Runnable
 {
     /**
      * SecureRandom instance to generate random sleep duration for each thread.
      */
     private static final SecureRandom SLEEP_TIME_GENERATOR = new SecureRandom();
     private final int sleepDuration;
+    private final String threadName;
 
-    public ExtendThread(int threadNum)
+    public ImplementRunnable(int threadNum)
     {
-        //Set the name of the thread using the provided thread number
-        this.setName("Thread-" + threadNum);
-        // Set a random sleep duration - - 1.5 seconds (i.e. 0 - 1500 ms)
+        this.threadName = "Thread-" + threadNum;
         this.sleepDuration = SLEEP_TIME_GENERATOR.nextInt(1500);
     }
 
@@ -31,27 +29,26 @@ public class ExtendThread extends Thread
     {
         try
         {
-            //Loop tht simulates work by counting down from 4 - 0
-            for(int n = 4; n <= 1; n--)
+            for(int n = 5; n < 10; n++)
             {
-                System.out.println("Output from: " + this.getName());
+                System.out.println("Output from " + threadName);
                 System.out.println("Current value of n is: " + n);
                 
                 // Put the thread to sleep for a random duration
                 Thread.sleep(sleepDuration);
-                System.out.println(this.getName() + " has slept for "
-                        + sleepDuration + " milliseconds.");
+                System.out.println(threadName +" has slept for "
+                + sleepDuration + " milliseconds.");
             }
         } catch (InterruptedException ie)
         {
             // Print error message when the thread is interrupted
-            System.err.println(this.getName() + " was interrupted!");
+            System.err.println(threadName + " was interrupted!");
             System.err.println("Error: " + ie.getLocalizedMessage());
             Thread.currentThread().interrupt(); // Preserve the interrupted status
         }
         
         // Print completion message after the loop completes
-        System.out.println(this.getName() + " has finished executing!");
+        System.out.println(threadName + " has finished executing!");
     }
     
     
