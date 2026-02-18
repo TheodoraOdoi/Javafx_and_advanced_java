@@ -31,7 +31,7 @@ public class SQLServerOpenConnection
             conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
         } catch (SQLException sqle)
         {
-            System.err.println("Sorry, the connection to the database failed.\"
+            System.err.println("Sorry, the connection to the database failed.\n"
                     + "Please verify that the connection parameters are correct"
                     + " and that the server ois running and try again!");
         }

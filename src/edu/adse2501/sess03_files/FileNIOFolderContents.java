@@ -1,6 +1,7 @@
 package edu.adse2501.sess03_files;
 
 import java.io.IOException;
+import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,42 +19,43 @@ public class FileNIOFolderContents
     
     public static void main(String[] args)
     {
-        //Use a try..with resources to autoclose resources
+        // Use a try...with resources to autoclose resources
         try(Scanner sc = new Scanner(System.in))
         {
-            //Prompt the user for the desired directory
+            // Prompt the user for the desired directory
             System.out.println("Please enter the path to the directory whose "
                     + "contents you wish to list/display -> ");
             
-            //Read in the directory/folder name
+            // Read in the directory/folder name
             path2Directory = Paths.get(sc.next());
             
-            //Display the contents of the directory/folder if the path exists
+            // Display the contents fo the directory/folder if the path exists
             if(Files.isDirectory(path2Directory))
             {
-                System.out.println("The contents of the " + path2Directory
-                        + "\n" + "-".repeat(100));
+                System.out.println("The contents of the " + path2Directory 
+                +"\n" + "_".repeat(85));
                 
-                //An object to iterate thru the directory contents
-                DirectorySream<Path> directoryStream = 
+                // An object to iterate through the directory contents
+                DirectoryStream<Path> directoryStream = 
                         Files.newDirectoryStream(path2Directory);
                 for(Path path:directoryStream)
                 {
                     System.out.println(path);
                 }
-                System.out.println("-".repeat(100));
+                System.out.println("_".repeat(85));
             }
             else
                 throw new IOException();
-        } catch(IOException ioe)
+        }catch(IOException ioe)
         {
-            System.err.println("The directory path was not found. \nPlease "
+            System.err.println("The directory path was not found.\nPlease "
                     + "confirm it exists and that you have sufficient "
                     + "permissions to access it and try again.\n");
-        } catch (Exception e)
+        }catch (Exception e)
         {
             System.err.println("The error " + e.getLocalizedMessage()
                     + " occurred!");
         }
     }
+    
 }
