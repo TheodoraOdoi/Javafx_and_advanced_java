@@ -16,8 +16,9 @@ public class SQLServerOpenConnection
 {
     
     // Class constants that will be used to connect to the database
-    private static final String DBURL = "jdbc:sqlserver://DESKTOP-LVIMDMM"
-            + "\\SQLEXPRESS;databaseTheodora_ADSE2501_CollegeDB";
+    private static final String DBURL = "jbdc:sqlserver://Edulink-R26-M7"
+            + "\\SQL_SERVER2022;databaseTheodora_ADSE2501_CollegeDB;"
+            + "encrypt=true;trustServerCertificate=true";
     private static final String USERNAME = "Java_Sem2";
     private static final String PASSWORD = "Jav@_S3m2!";
     private static final Logger LOGGER = Logger.getLogger(
@@ -29,6 +30,8 @@ public class SQLServerOpenConnection
         try
         {
             conn = DriverManager.getConnection(DBURL, USERNAME, PASSWORD);
+            System.out.println("Successfully connected to database!");
+            return conn;
         } catch (SQLException sqle)
         {
             System.err.println("Sorry, the connection to the database failed.\n"
