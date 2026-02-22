@@ -16,9 +16,11 @@ public class SQLServerOpenConnection
 {
     
     // Class constants that will be used to connect to the database
-    private static final String DBURL = "jbdc:sqlserver://Edulink-R26-M7"
-            + "\\SQL_SERVER2022;databaseTheodora_ADSE2501_CollegeDB;"
-            + "encrypt=true;trustServerCertificate=true";
+    private static final String DBURL = 
+            "jbdc:sqlserver://DESKTOP-LVIMDMM" // driver & host to connect to
+            + "\\SQLEXPRESS" //SQL Server instance to connect to 
+            + "databaseTheodora_ADSE2501_CollegeDB;" //
+            + "encrypt=true;trustServerCertificate=true;";
     private static final String USERNAME = "Java_Sem2";
     private static final String PASSWORD = "Jav@_S3m2!";
     private static final Logger LOGGER = Logger.getLogger(

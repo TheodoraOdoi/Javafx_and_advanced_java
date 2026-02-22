@@ -16,43 +16,35 @@ import java.sql.SQLException;
  */
 public class SQLServerCourses
 {
-    private static final String COURSE_QUERY = "select * from Course";
+    private static final String COURSE_QUERY = "Select * from Course";
     
     public static void main(String[] args)
     {
-        //create a list of available courses.
+        // Create a list of available courses.
         List<Course> collegeCourses = new ArrayList<>();
         
-        //use a try with resources to connect to the sql server db
+        // Use a try with resoures to connect to the SQL Server DB
         try(Connection conn = new SQLServerOpenConnection().createConnection();
                 Statement stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
                         ResultSet.CONCUR_READ_ONLY);
                 ResultSet rs = stmt.executeQuery(COURSE_QUERY))
         {
-            int n = 0;// integer used for display purpose
+            int n = 0; // Integer used for display purposes
             while(rs.next())
             {
-                //Add the courses from the course table to the list of available courses
-                collegeCourses.add(new Course(rs.getString(1), rs.getString(2),
-                        rs.getFloat(3), rs.getInt(4)));
+                // Add the courses from the Course table to the list of available courses
+                collegeCourses.add(new Course(rs.getString(1),rs.getString(2),
+                        rs.getFloat(3),rs.getInt(4)));
                 
-                // display the details of the added course
+                // Display the details of the added course
                 System.out.println("Displaying the details of course number "
-                        + (n + 1));
+                        + (++n));
                 System.out.println(collegeCourses.toString());
-                n++;
+                // n++;
             }
-            System.out.println("Number of courses found: " + n);
-            for(Course c : collegeCourses) 
-            {
-                System.out.println(c);
-            }
-            
-        } catch (SQLException ex) 
+        }catch(SQLException sqle)
         {
-            System.err.println("Error processing database query: " + ex.getMessage());
-            ex.printStackTrace();
+            System.err.println(sqle.getLocalizedMessage());
         }
-        
     }
 }
