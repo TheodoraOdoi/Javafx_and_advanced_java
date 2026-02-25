@@ -1,0 +1,72 @@
+package edu.adse2501.sess09_java_data_structures;
+
+import java.util.Stack;
+
+/**
+ * This program demonstrates the usage of the Stack class in Java.
+* Stack is a class that implements a last-in, first-out (LIFO) data structure.
+* It allows adding elements to the top of the stack and removing elements
+* from the top, following the LIFO principle.
+*
+* Methods demonstrated include:
+* - push: To add an element to the top of the stack.
+* - pop: To remove and retrieve the top element of the stack.
+* - peek: To retrieve, without removing, the top element of the stack.
+* - search: To find the position of an element in the stack.
+* - empty: To check if the stack is empty.
+* 
+ * @author user
+ */
+public class StackDemo
+{
+    /**
+     * main method demonstrates basic operations with the java.util.Stack class,
+     * including pushing, popping, peeking, searching & checking if the stack
+     * is empty
+     * 
+     * @param args
+     */
+    public static void main(String[] args)
+    {
+        // create a stack to hold interger elements
+        Stack<Integer> stack = new Stack<>();
+        
+        // Push elements into the stack
+        System.out.println("Pushing elements into the stack: ");
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        
+        // Display the current elements in the stack
+        System.out.println("Stack after pushes(adding elements): " + stack);
+        
+        // Peek at the top element without removing it
+        System.out.println("Peeking at the top element in the the stack: " + stack.peek());
+        
+        //Pop(remove) elements from the stack
+        System.out.println("Popping elements from the stack: ");
+        while(!stack.empty())
+        {
+            System.out.println("Popped: " + stack.pop());
+            System.out.println("Stack after pop(): " + stack);
+        }
+        
+        // check whether the stack is empty
+        System.out.println("\nIs the stack empty?" + stack.empty());
+        
+        //push elements again to demonstrate search
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        System.out.println("\nStack after re-pushing elements: " + stack);
+        
+        //search for an element in the stack
+        int searchPosition = stack.search(20);
+        if(searchPosition != -1)
+            System.out.println("Position of element '20' is stack from the top"
+                    + " is: " + searchPosition);
+        else
+            System.out.println("Element '20' was not found in the stack.");
+    }
+}
