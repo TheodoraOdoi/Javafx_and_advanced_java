@@ -1,8 +1,7 @@
 package edu.adse2501.sess09_java_data_structures;
 
 import java.util.Enumeration;
-import java.util.HashTable;
-
+import java.util.Hashtable;
 /**
  * This program demonstrates the usage of the Hashtable class in Java. Hashtable
  * is a collection class that stores key-value pairs, where both keys and values
@@ -23,7 +22,7 @@ public class HashTableDemo
     /**
      * main method demonstrates basic operations of the java.util.HashTable
      * class including adding, retrieving, removing elements & checking for the
-     * exixtence of specific keys or values.
+     * existence of specific keys or values.
      * 
      * @param args String array of command line arguments.
      */
