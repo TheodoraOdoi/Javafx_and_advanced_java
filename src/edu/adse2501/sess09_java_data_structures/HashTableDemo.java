@@ -5,7 +5,7 @@ import java.util.Hashtable;
 /**
  * This program demonstrates the usage of the Hashtable class in Java. Hashtable
  * is a collection class that stores key-value pairs, where both keys and values
- * are objects. The class is synchronised, making it thread-safe for concurrent
+ * are objects. The class is synchronized, making it thread-safe for concurrent
  * access, but it does not allow null keys or null values.
  *
  * Key methods demonstrated include: 
@@ -17,52 +17,52 @@ import java.util.Hashtable;
  * 
  * @author user
  */
-public class HashTableDemo
+public class HashtableDemo
 {
     /**
-     * main method demonstrates basic operations of the java.util.HashTable
-     * class including adding, retrieving, removing elements & checking for the
-     * existence of specific keys or values.
+     * main method demonstrates basic operations of the Java.util.Hashtable
+     * class including adding, retrieving, removing elements, and checking
+     * for the existence of specific keys or values. 
      * 
      * @param args String array of command line arguments.
      */
     public static void main(String[] args)
     {
-        // create a HashTable instance to store integer keys & string values
-        HashTable<Integer, String> hashtable = new HashTable<>();
+        // Create a HashTable instance to store Integer keys and String values
+        Hashtable<Integer, String> hashtable = new Hashtable<>();
         
-        // Adding key-value pairs to the HashTable
-        System.out.println("Adding key-value pairs to the HashTable");
+        // Adding key-value pairs to the Hashtable
+        System.out.println("Adding key-value pairs to the Hashtable");
         hashtable.put(1, "Apple");
-        hashtable.put(1, "Banana");
-        hashtable.put(1, "Avocado");
-        hashtable.put(1, "Mango");
+        hashtable.put(2, "Banana");
+        hashtable.put(3, "Avocado");
+        hashtable.put(4, "Mango");
         
-        // Display the entire HashTable
-        System.out.println("Initial HashTable: " + hashtable);
+        // Display the entire Hashtable
+        System.out.println("Initial Hashtable: " + hashtable);
         
         // Retrieve a value associated with a specific key
         int keyToRetrieve = 3;
         System.out.println("\nValue associated with key " + keyToRetrieve + " : "
                 + hashtable.get(keyToRetrieve));
         
-        //Remove a key value pair based on the key
-         int keyToRemove = 2;
-        System.out.println("\nRemoving key " + keyToRemove + " and its value"
+        // Remove a key-value pair based on the key
+        int keyToRemove = 2;
+        System.out.println("\nRemoving key " + keyToRemove + " and its value "
                 + "from the hashtable");
         hashtable.remove(keyToRemove);
-        System.out.println("Hashtable after");
+        System.out.println("Hashtable after removal : " + hashtable);
         
-        // checking whether a specific key exists in the Hashtable
-         int keyToCheck = 1;
-        System.out.println("\nDoes key " + keyToCheck + " exist? "
+        // Checking whether a specific key exists in the Hashtable
+        int keyToCheck = 1;
+        System.out.println("\nDoes key " + keyToCheck + " exist? " 
                 + hashtable.containsKey(keyToCheck));
         
-        // checking whether a specific value exists in the Hashtable
+        // Checking whether a specific value exists in the Hashtable
         String valueToCheck = "Mango";
         System.out.println("Does value '" + valueToCheck + "' exists? "
                 + hashtable.containsValue(valueToCheck));
-                
+        
         // Iterating over the keys in the Hashtable
         System.out.println("\nIterating over the keys in the Hashtable:");
         Enumeration<Integer>keys = hashtable.keys();

@@ -1,6 +1,5 @@
 package edu.adse2501.sess10_new_and_advanved_java_features;
 
-import static java.nio.file.Files.list;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -14,33 +13,34 @@ import java.util.stream.Collectors;
  */
 public class PredicateNotDemo
 {
+
     /**
-     * filters out empty strings from the list using predicate.not
-     * 
-     * @param strings the list of the strings to filter
-     * 
-     * @return a new list containing only non-empty strings 
+     * Filters out empty strings from the list using Predicate.not
+     *
+     * @param strings the list of strings to filter
+     *
+     * @return a new list containing only non-empty strings
      */
     static List<String> filterNonEmptyStrings(List<String> strings)
     {
-        //define a predicate to check if a string is empty
+        // Define a predicate to check if  a string is empty
         Predicate<String> isEmpty = String::isEmpty;
-        
-        // use predicate.not to negate the isEmpty predicate, keeping only non-empty strings
+
+        //Use Predicate.not to negate the isEmpty predicate, keeping only non-empty strings
         return strings.stream()
-                .filter(Predicate.not(isEmpty)) // equivalent to : s-> !s.isEmpty()
+                .filter(Predicate.not(isEmpty)) // Equivalent to : s -> !s.isEmpty()
                 .collect(Collectors.toList());
     }
     
     public static void main(String[] args)
     {
-        //sample list of strings with some empty strings
-        List<String> words = list.of("melon", "", "avocado", "banana", "", "grapes", "apple");
+        // Sample list of strings, with some empty strings
+        List<String> words = List.of("melon", "","avocado","banana","","grapes","apple");
         
-        System.out.println("Original list of strings(Fruits)");
+        System.out.println("Original list of strings(fruits)");
         System.out.println(words);
         
-        //filter out empty strings using predicate.not
+        // Filter out empty strings using Predicate.not
         List<String> nonEmptyWords = filterNonEmptyStrings(words);
         
         System.out.println("\nList of words after filtering out empty strings:");
